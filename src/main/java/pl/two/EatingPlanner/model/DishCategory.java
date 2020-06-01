@@ -1,5 +1,5 @@
 package pl.two.EatingPlanner.model;
 
-public enum MealTimeCategory {
+public enum DishCategory {
     BREAKFAST, LUNCH, DINNER, SUPPER
 }
