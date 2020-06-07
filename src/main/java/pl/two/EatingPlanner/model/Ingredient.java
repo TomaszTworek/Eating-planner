@@ -7,7 +7,9 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -32,8 +34,13 @@ public class Ingredient {
     @JoinTable(name = "ingredient_dishes",
             joinColumns = @JoinColumn(name = "ingredient_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "dish_id", referencedColumnName = "id"))
-    private Set<Dish> dishes = new HashSet<>();
+    private List<Dish> dishes = new ArrayList<>();
 
     private Double calories;
 
+
+    public void addDish(Dish dish) {
+        this.dishes.add(dish);
+        dish.getIngredients().add(this);
+    }
 }

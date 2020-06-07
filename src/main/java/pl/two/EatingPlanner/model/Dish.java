@@ -8,7 +8,9 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -34,13 +36,13 @@ public class Dish {
 
     @ManyToMany(mappedBy = "dishes")
     @JsonIgnoreProperties("dishes")
-    private Set<Ingredient> ingredients = new HashSet<>();
+    private List<Ingredient> ingredients = new ArrayList<>();
 
     @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @JoinTable(name = "dishes_menus",
             joinColumns = @JoinColumn(name = "dish_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "dish_id", referencedColumnName = "id"))
-    private Set<Menu> menus = new HashSet<>();
+            inverseJoinColumns = @JoinColumn(name = "menu_id", referencedColumnName = "id"))
+    private List<Menu> menus = new ArrayList<>();
 
     private Double calories;
 

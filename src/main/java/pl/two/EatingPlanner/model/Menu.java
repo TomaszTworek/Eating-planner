@@ -9,7 +9,9 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import javax.transaction.Transactional;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -30,7 +32,7 @@ public class Menu {
 
     @ManyToMany(mappedBy = "menus")
     @JsonIgnoreProperties
-    private Set<Dish> dishes = new HashSet<>();
+    private List<Dish> dishes = new ArrayList<>();
 
     private Byte dishesPerDay;
 
