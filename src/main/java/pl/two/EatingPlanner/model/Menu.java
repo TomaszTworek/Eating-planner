@@ -34,10 +34,18 @@ public class Menu {
     @JsonIgnoreProperties
     private List<Dish> dishes = new ArrayList<>();
 
-    private Byte dishesPerDay;
+    private int dishesPerDay;
 
-    private Byte durationTimeInDays;
+    private int durationTimeInDays;
 
+    public void addDish(Dish dish){
+        this.dishes.add(dish);
+        dish.getMenus().add(this);
+    }
 
+    public void removeDish(Dish dish){
+        this.dishes.remove(dish);
+        dish.getMenus().remove(this);
+    }
 }
 

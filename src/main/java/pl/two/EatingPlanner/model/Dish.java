@@ -47,5 +47,14 @@ public class Dish {
     private Double calories;
 
 
+    public void addIngredient(Ingredient ingredient) {
+        this.ingredients.add(ingredient);
+        ingredient.getDishes().add(this);
+    }
+
+    public void removeIngredient(Ingredient ingredient) {
+        this.ingredients.remove(ingredient);
+        ingredient.getDishes().remove(this);
+    }
 
 }

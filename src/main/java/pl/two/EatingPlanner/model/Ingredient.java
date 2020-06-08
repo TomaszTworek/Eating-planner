@@ -38,9 +38,4 @@ public class Ingredient {
 
     private Double calories;
 
-
-    public void addDish(Dish dish) {
-        this.dishes.add(dish);
-        dish.getIngredients().add(this);
-    }
 }
