@@ -6,4 +6,5 @@ import pl.two.EatingPlanner.model.Dish;
 
 @Repository
 public interface DishRepository extends JpaRepository<Dish, Long> {
+    Dish findByName(String name);
 }
