@@ -6,4 +6,5 @@ import pl.two.EatingPlanner.model.Ingredient;
 
 @Repository
 public interface IngredientRepository extends JpaRepository<Ingredient, Long> {
+    Ingredient findByName(String imageName);
 }

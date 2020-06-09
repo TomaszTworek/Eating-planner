@@ -41,12 +41,10 @@ public class IntegrationTestsForProperEntitiesMapping {
     public void setUp() {
         testIngredient1 = new Ingredient();
         testIngredient1.setName("Ingredient Test 1");
-        testIngredient1.setAmount(2.0);
         testIngredient1.setUnits("kg");
 
         testIngredient2 = new Ingredient();
         testIngredient2.setName("Ingredient Test 2");
-        testIngredient2.setAmount(5.0);
         testIngredient2.setUnits("dag");
 
         testDish1 = new Dish();
