@@ -1,1 +1,43 @@
-<p>ingredient works!</p>
+<!-- [(ngModel)] two way binding-->
+<h1>Add ingredient to DB</h1>
+<div class="container">
+  <div class="row">
+    <div class="offset-3"></div>
+    <div class="col-md-6">
+      <form name="form" (submit)="addIngredient()" novalidate class="feedback-form">
+        <div class="form-group">
+          <label for="name">Ingredient name: </label>
+          <input type="text"
+                 id="name"
+                 class="form-control"
+                 name="name"
+                 placeholder="Ingredient name" [(ngModel)]="model.name"
+                 required/>
+        </div>
+        <div class="form-group">
+          <label for="units">Units:</label>
+          <input type="text"
+                 id="units"
+                 class="form-control"
+                 name="units"
+                 placeholder="Units measure" [(ngModel)]="model.units"
+                 required/>
+        </div>
+        <div class="form-group">
+          <label for="calories">Calories:</label>
+          <input type="text"
+                 id="calories"
+                 class="form-control"
+                 name="calories"
+                 placeholder="Calories" [(ngModel)]="model.calories"
+                 required/>
+        </div>
+        <button type="submit" class="btn btn-info pull-right">
+          <i class="fa fa-plus"></i>
+          <span> Add ingredient to database</span>
+        </button>
+      </form>
+      <div class="offset-3"></div>
+    </div>
+  </div>
+</div>
