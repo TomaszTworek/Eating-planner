@@ -10,7 +10,7 @@ export class IngredientComponent implements OnInit {
   model: IngredientViewModel = {
     name: '',
     units: '',
-    calories: 0
+    calories: undefined
   }
 
   constructor(private http: HttpClient) {
