@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
+import {Ingredient} from "../models/ingredient";
 
 @Component({
   selector: 'app-ingredient',
@@ -7,6 +8,8 @@ import {HttpClient} from "@angular/common/http";
   styleUrls: ['./ingredient.component.css']
 })
 export class IngredientComponent implements OnInit {
+  ingredients: Ingredient[] = [];
+
   model: IngredientViewModel = {
     name: '',
     units: '',
@@ -17,12 +20,25 @@ export class IngredientComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getAllIngredients();
+  }
+
+  public getAllIngredients() {
+    let url = "http://localhost:8080/ingredients/all"
+    this.http.get<Ingredient[]>(url).subscribe(
+      response => {
+        this.ingredients = response;
+      },
+      error => {
+        alert("An error occurred while getting all ingredients")
+      }
+    )
   }
 
   addIngredient(): void {
     let url = "http://localhost:8080/ingredients/add";
     this.http.post(url, this.model).subscribe(
-      result => {
+      response => {
         location.reload();
       },
       error => {
