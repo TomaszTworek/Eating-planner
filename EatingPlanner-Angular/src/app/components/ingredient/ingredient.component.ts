@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Ingredient} from "../models/ingredient";
+import {Ingredient} from "../../models/ingredient";
+import {ApiIngredientService} from "../../services/api-ingredient.service";
 
 @Component({
   selector: 'app-ingredient',
@@ -16,7 +17,7 @@ export class IngredientComponent implements OnInit {
     calories: undefined
   }
 
-  constructor(private http: HttpClient) {
+  constructor(private apiIngredientService: ApiIngredientService) {
   }
 
   ngOnInit(): void {
@@ -24,8 +25,7 @@ export class IngredientComponent implements OnInit {
   }
 
   public getAllIngredients() {
-    let url = "http://localhost:8080/ingredients/all"
-    this.http.get<Ingredient[]>(url).subscribe(
+    this.apiIngredientService.getAllIngredients().subscribe(
       response => {
         this.ingredients = response;
       },
@@ -36,8 +36,7 @@ export class IngredientComponent implements OnInit {
   }
 
   addIngredient(): void {
-    let url = "http://localhost:8080/ingredients/add";
-    this.http.post(url, this.model).subscribe(
+    this.apiIngredientService.addIngredient(this.model).subscribe(
       response => {
         location.reload();
       },
