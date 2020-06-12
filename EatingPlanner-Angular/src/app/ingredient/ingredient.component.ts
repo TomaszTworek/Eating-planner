@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-ingredient',
@@ -12,14 +13,23 @@ export class IngredientComponent implements OnInit {
     calories: 0
   }
 
-  constructor() {
+  constructor(private http: HttpClient) {
   }
 
   ngOnInit(): void {
   }
 
   addIngredient(): void {
-    alert(this.model.name);
+    let url = "http://localhost:8080/ingredients/add";
+    this.http.post(url, this.model).subscribe(
+      result => {
+        location.reload();
+      },
+      error => {
+        alert("An error has occured while sending feedback");
+      }
+    );
+
   }
 
 }

@@ -8,6 +8,8 @@ import {IngredientComponent} from './ingredient/ingredient.component';
 import {NotFoundComponent} from './not-found/not-found.component';
 //Import forms:
 import {FormsModule} from "@angular/forms";
+//Import http to connect with backend
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -19,6 +21,7 @@ import {FormsModule} from "@angular/forms";
   imports: [
     BrowserModule,
     FormsModule,
+    HttpClientModule,
     AppRoutingModule
   ],
   providers: [],
