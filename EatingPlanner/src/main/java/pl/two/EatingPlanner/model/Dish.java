@@ -27,6 +27,8 @@ public class Dish {
 
     private String name;
 
+    @Column(name = "category")
+    @Enumerated(EnumType.STRING)
     private DishCategory dishCategory;
 
     private String description;

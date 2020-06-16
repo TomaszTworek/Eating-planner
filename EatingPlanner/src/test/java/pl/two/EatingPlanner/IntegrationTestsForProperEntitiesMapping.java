@@ -137,4 +137,17 @@ public class IntegrationTestsForProperEntitiesMapping {
         assertThat(testedMenu.getName()).isEqualTo("Casual menu");
         assertThat(testedMenu.getDishesPerDay()).isEqualTo(4);
     }
+
+    @Test
+    public void shouldSaveEnumInDatabase() {
+        Dish dish = new Dish();
+        dish.setName("Test");
+        dish.setDishCategory(DishCategory.BREAKFAST);
+        dishRepository.save(dish);
+
+        Dish foundedDish = dishRepository.findByName("Test");
+        assertThat(foundedDish.getDishCategory()).isEqualByComparingTo(DishCategory.BREAKFAST);
+
+
+    }
 }
