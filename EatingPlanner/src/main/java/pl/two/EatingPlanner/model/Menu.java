@@ -47,5 +47,17 @@ public class Menu {
         this.dishes.remove(dish);
         dish.getMenus().remove(this);
     }
+
+    @Override
+    public String toString() {
+        return "Menu{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", createdAt=" + createdAt +
+                ", dishes=" + dishes +
+                ", dishesPerDay=" + dishesPerDay +
+                ", durationTimeInDays=" + durationTimeInDays +
+                '}';
+    }
 }
 

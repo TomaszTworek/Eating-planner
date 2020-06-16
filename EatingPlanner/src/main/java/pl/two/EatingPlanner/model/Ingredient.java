@@ -36,4 +36,13 @@ public class Ingredient {
 
     private Double calories;
 
+    @Override
+    public String toString() {
+        return "Ingredient{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", units='" + units + '\'' +
+                ", calories=" + calories +
+                '}';
+    }
 }

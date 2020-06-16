@@ -57,4 +57,16 @@ public class Dish {
         ingredient.getDishes().remove(this);
     }
 
+    @Override
+    public String toString() {
+        return "Dish{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", dishCategory=" + dishCategory +
+                ", description='" + description + '\'' +
+                ", image=" + image +
+                ", ingredients=" + ingredients +
+                ", calories=" + calories +
+                '}';
+    }
 }
