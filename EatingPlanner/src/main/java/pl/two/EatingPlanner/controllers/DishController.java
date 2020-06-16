@@ -1,15 +1,14 @@
 package pl.two.EatingPlanner.controllers;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import pl.two.EatingPlanner.model.Dish;
 import pl.two.EatingPlanner.services.DishService;
 
 import java.util.List;
 
 @RestController
+@RequestMapping("/dishes")
+@CrossOrigin
 public class DishController {
 
     private DishService dishService;
@@ -18,12 +17,12 @@ public class DishController {
         this.dishService = dishService;
     }
 
-    @GetMapping
+    @GetMapping("/all")
     public List<Dish> getAll() {
         return dishService.findAll();
     }
 
-    @PostMapping
+    @PostMapping("/add")
     public void addDish(@RequestBody Dish dish) {
         dishService.save(dish);
     }

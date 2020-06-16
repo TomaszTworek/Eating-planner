@@ -31,7 +31,7 @@ public class Menu {
     private LocalDate createdAt;
 
     @ManyToMany(mappedBy = "menus")
-    @JsonIgnoreProperties
+    @JsonIgnoreProperties("menus")
     private List<Dish> dishes = new ArrayList<>();
 
     private int dishesPerDay;
