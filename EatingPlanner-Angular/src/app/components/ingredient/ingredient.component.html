@@ -1,0 +1,69 @@
+<!-- [(ngModel)] two way binding-->
+<!-- #name - the we can use it below it is our input
+   [ngClass]="{'is-invalid':f.submitted && name.invalid}"  - warunki do spełnienia-->
+<h1>Add ingredient to DB</h1>
+<div class="container">
+  <div class="row">
+    <div class="offset-3"></div>
+    <div class="col-md-6">
+      <form name="form" #f="ngForm" (ngSubmit)="f.form.valid && addIngredient()" novalidate class="feedback-form">
+        <div class="form-group">
+          <label for="name">Ingredient name: </label>
+          <input type="text"
+                 id="name"
+                 class="form-control"
+                 name="name"
+                 placeholder="Ingredient name" [(ngModel)]="model.name"
+                 #name="ngModel"
+                 [ngClass]="{ 'is-invalid': f.submitted && name.invalid }"
+                 required/>
+          <!-- Input validation group -->
+          <div *ngIf="f.submitted && name.invalid" class="invalid-input">
+            <!-- Individual validation errors-->
+            <div *ngIf="name.errors?.required">Field is required</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="units">Units:</label>
+          <input type="text"
+                 id="units"
+                 class="form-control"
+                 name="units"
+                 placeholder="Units measure" [(ngModel)]="model.units"
+                 #units="ngModel"
+                 [ngClass]="{ 'is-invalid': f.submitted && units.invalid }"
+                 required/>
+          <div *ngIf="f.submitted && units.invalid" class="invalid-input">
+            <!-- Individual validation errors-->
+            <div *ngIf="units.errors?.required">Field is required</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="calories">Calories:</label>
+          <input type="text"
+                 id="calories"
+                 class="form-control"
+                 name="calories"
+                 placeholder="Calories" [(ngModel)]="model.calories"
+                 #calories="ngModel"
+                 [ngClass]="{ 'is-invalid': f.submitted && calories.invalid }"
+                 required/>
+          <div *ngIf="f.submitted && calories.invalid" class="invalid-input">
+            <!-- Individual validation errors-->
+            <div *ngIf="calories.errors?.required">Field is required</div>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-info pull-right">
+          <i class="fa fa-plus"></i>
+          <span> Add ingredient to database</span>
+        </button>
+      </form>
+      <div class="offset-3"></div>
+    </div>
+  </div>
+</div>
+<div class="container">
+
+</div>
+
+
