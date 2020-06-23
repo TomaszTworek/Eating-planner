@@ -83,16 +83,19 @@ public class IntegrationTestsForProperEntitiesMapping {
     }
 
     @Test
-    public void shouldDishContainsExactlyThreeIngredientsAfterAddDishToThisIngredients() {
+    public void shouldDishContainsExactlyThreeIngredients() {
         //given
         Ingredient testedIngredient1 = ingredientRepository.findById(1L).get();
         Ingredient testedIngredient2 = ingredientRepository.findById(2L).get();
-
+        Ingredient t = new Ingredient();
+        t.setName("t");
+        Dish testDish2 = new Dish();
         //when
-        testDish1.addIngredient(testedIngredient1);
-        testDish1.addIngredient(testedIngredient1);
-        testDish1.addIngredient(testedIngredient2);
-        Dish foundedDish = dishRepository.save(testDish1);
+        testDish2.addIngredient(testedIngredient1);
+        testDish2.addIngredient(testedIngredient1);
+        testDish2.addIngredient(testedIngredient2);
+        testDish2.addIngredient(t);
+        Dish foundedDish = dishRepository.save(testDish2);
 
         //than
         assertThat(foundedDish.getIngredients().size()).isEqualTo(3);
