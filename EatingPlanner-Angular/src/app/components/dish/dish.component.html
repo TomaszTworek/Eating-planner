@@ -3,6 +3,13 @@
   <div class="row">
     <div class="offset-3"></div>
     <div class="col-md-6">
+      <input #ingName type="text" class="form-control" id="ingName">
+      <input #ingDesc type="text" class="form-control" id="ingDesc">
+      <input #ingCalories type="number" class="form-control" id="ingCalories">
+      <button (click)="addIngredientToDish(ingName.value,ingDesc.value,ingCalories.value)" class="btn btn-primary"></button>
+      <div *ngFor="let ing of model.ingredients">
+        {{ing.name}}
+      </div>
       <form name="form" #f="ngForm" (ngSubmit)="f.form.valid && addDish()" novalidate class="feedback-form">
         <div class="form-group">
           <label for="name">Ingredient name: </label>

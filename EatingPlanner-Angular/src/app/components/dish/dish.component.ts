@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Ingredient} from "../../models/ingredient";
 import {ApiIngredientService} from "../../services/api-ingredient.service";
 import {IngredientViewModel} from "../ingredient/ingredient.component";
@@ -19,7 +19,8 @@ export class DishComponent implements OnInit {
     name: '',
     category: undefined,
     description: '',
-    calories: undefined
+    calories: undefined,
+    ingredients: []
   }
 
   constructor(private apiDishesService: ApiDishesService) {
@@ -29,15 +30,23 @@ export class DishComponent implements OnInit {
     this.getAllDishes();
   }
 
+
   public getAllDishes() {
     this.apiDishesService.getAllDishes().subscribe(
       response => {
-        this.dishes= response;
+        this.dishes = response;
       },
       error => {
         alert("An error occurred while getting all ingredients")
       }
     )
+  }
+
+  addIngredientToDish(name: string, units: string, calories: number) {
+    console.log("NAME" + name)
+    let ingredient = new Ingredient(name, units, calories);
+    console.log("TERAZ" + ingredient.name);
+    this.model.ingredients.push(ingredient);
   }
 
   addDish(): void {
@@ -53,9 +62,11 @@ export class DishComponent implements OnInit {
   }
 
 }
+
 export interface DishViewModel {
   name: string;
   category: DishCategory;
   description: string;
   calories: number;
+  ingredients: Ingredient[];
 }
