@@ -11,13 +11,15 @@ import {HttpClientModule} from "@angular/common/http";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {NavigationComponent} from "./components/navigation/navigation.component";
 import {NotFoundComponent} from "./components/not-found/not-found.component";
+import { DishComponent } from './components/dish/dish.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavigationComponent,
     IngredientComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    DishComponent
   ],
   imports: [
     BrowserModule,

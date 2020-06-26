@@ -1,0 +1,95 @@
+<h1>Add ingredient to DB</h1>
+<div class="container">
+  <div class="row">
+    <div class="offset-3"></div>
+    <div class="col-md-6">
+      <input #ingName type="text" class="form-control" id="ingName">
+      <input #ingDesc type="text" class="form-control" id="ingDesc">
+      <input #ingCalories type="number" class="form-control" id="ingCalories">
+      <button (click)="addIngredientToDish(ingName.value,ingDesc.value,ingCalories.value)" class="btn btn-primary"></button>
+      <div *ngFor="let ing of model.ingredients">
+        {{ing.name}}
+      </div>
+      <form name="form" #f="ngForm" (ngSubmit)="f.form.valid && addDish()" novalidate class="feedback-form">
+        <div class="form-group">
+          <label for="name">Ingredient name: </label>
+          <input type="text"
+                 id="name"
+                 class="form-control"
+                 name="name"
+                 placeholder="Ingredient name" [(ngModel)]="model.name"
+                 #name="ngModel"
+                 [ngClass]="{ 'is-invalid': f.submitted && name.invalid }"
+                 required/>
+          <!-- Input validation group -->
+          <div *ngIf="f.submitted && name.invalid" class="invalid-input">
+            <!-- Individual validation errors-->
+            <div *ngIf="name.errors?.required">Field is required</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="category">Category name: </label>
+          <select type="text"
+                  id="category"
+                  class="form-control"
+                  name="category"
+                  [(ngModel)]="model.category"
+                  #category="ngModel"
+                  [ngClass]="{ 'is-invalid': f.submitted && category.invalid }"
+                  required>
+            <option>BREAKFAST</option>
+            <option>LUNCH</option>
+            <option>DINNER</option>
+            <option>SUPPER</option>
+          </select>
+          <!-- Input validation group -->
+          <div *ngIf="f.submitted && category.invalid" class="invalid-input">
+            <!-- Individual validation errors-->
+            <div *ngIf="category.errors?.required">Field is required</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="description">Description:</label>
+          <input type="text"
+                 id="description"
+                 class="form-control"
+                 name="description"
+                 placeholder="Description" [(ngModel)]="model.description"
+                 #description="ngModel"
+                 [ngClass]="{ 'is-invalid': f.submitted && description.invalid }"
+                 required/>
+          <div *ngIf="f.submitted && description.invalid" class="invalid-input">
+            <!-- Individual validation errors-->
+            <div *ngIf="description.errors?.required">Field is required</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="calories">Calories:</label>
+          <input type="text"
+                 id="calories"
+                 class="form-control"
+                 name="calories"
+                 placeholder="Calories" [(ngModel)]="model.calories"
+                 #calories="ngModel"
+                 [ngClass]="{ 'is-invalid': f.submitted && calories.invalid }"
+                 required/>
+          <div *ngIf="f.submitted && calories.invalid" class="invalid-input">
+            <!-- Individual validation errors-->
+            <div *ngIf="calories.errors?.required">Field is required</div>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-info pull-right">
+          <i class="fa fa-plus"></i>
+          <span> Add ingredient to database</span>
+        </button>
+      </form>
+      <div class="offset-3"></div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <li *ngFor="let dish of dishes">
+    {{dish.name}}
+    {{dish.calories}}
+  </li>
+</div>

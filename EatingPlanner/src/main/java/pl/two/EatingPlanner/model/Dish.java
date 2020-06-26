@@ -27,6 +27,8 @@ public class Dish {
 
     private String name;
 
+    @Column(name = "category")
+    @Enumerated(EnumType.STRING)
     private DishCategory dishCategory;
 
     private String description;
@@ -57,4 +59,16 @@ public class Dish {
         ingredient.getDishes().remove(this);
     }
 
+    @Override
+    public String toString() {
+        return "Dish{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", dishCategory=" + dishCategory +
+                ", description='" + description + '\'' +
+                ", image=" + image +
+                ", ingredients=" + ingredients +
+                ", calories=" + calories +
+                '}';
+    }
 }

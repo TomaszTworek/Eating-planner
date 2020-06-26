@@ -31,7 +31,7 @@ public class Menu {
     private LocalDate createdAt;
 
     @ManyToMany(mappedBy = "menus")
-    @JsonIgnoreProperties
+    @JsonIgnoreProperties("menus")
     private List<Dish> dishes = new ArrayList<>();
 
     private int dishesPerDay;
@@ -46,6 +46,18 @@ public class Menu {
     public void removeDish(Dish dish){
         this.dishes.remove(dish);
         dish.getMenus().remove(this);
+    }
+
+    @Override
+    public String toString() {
+        return "Menu{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", createdAt=" + createdAt +
+                ", dishes=" + dishes +
+                ", dishesPerDay=" + dishesPerDay +
+                ", durationTimeInDays=" + durationTimeInDays +
+                '}';
     }
 }
 

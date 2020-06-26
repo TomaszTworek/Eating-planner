@@ -5,5 +5,11 @@ export class Ingredient {
   name: string;
   units: string;
   calories: number;
-  dishes : Dish;
+  dishes: Dish[];
+
+  constructor(name: string, units: string, calories: number) {
+    this.name = name;
+    this.units = units;
+    this.calories = calories;
+  }
 }
