@@ -87,6 +87,15 @@
     </div>
   </div>
 </div>
+<app-image-uploader></app-image-uploader>
+<div class="col-md-12">
+  <div class="row">
+    <div  *ngFor="let dish of dishes" class="col-md-3 mx-auto my-2">
+      <div *ngIf="dish.getImg">
+        <img [src]="dish.getImg" class="myImg" alt="Responsive image">
+      </div>
+    </div>
+  </div>
 <div class="container">
   <li *ngFor="let dish of dishes">
     {{dish.name}}

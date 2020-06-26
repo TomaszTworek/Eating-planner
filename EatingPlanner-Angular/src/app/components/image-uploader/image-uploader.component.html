@@ -1,0 +1,14 @@
+<div class="form-group">
+  <br>
+  <hr />
+  <p>Choose image: </p>
+  <div class="container row">
+    <div class="col-md-6">
+      <input type="file" (change)="onFileChanged($event)">
+    </div>
+    <div class="col-md-6">
+      <input class="btn btn-success" type="button" (click)="onUpload()" value="Upload">
+    </div>
+  </div>
+  <hr />
+</div>

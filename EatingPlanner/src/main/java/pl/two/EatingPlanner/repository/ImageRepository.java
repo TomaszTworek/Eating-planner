@@ -8,5 +8,5 @@ import java.util.Optional;
 
 @Repository
 public interface ImageRepository extends JpaRepository<Image, Long> {
-    Image findByName(String imageName);
+    Optional<Image> findByName(String imageName);
 }
