@@ -12,6 +12,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {NavigationComponent} from "./components/navigation/navigation.component";
 import {NotFoundComponent} from "./components/not-found/not-found.component";
 import { DishComponent } from './components/dish/dish.component';
+import { ImageUploaderComponent } from './components/image-uploader/image-uploader.component';
+import { ImageGetComponent } from './components/image-get/image-get.component';
+import {MatButtonModule} from "@angular/material/button";
 
 @NgModule({
   declarations: [
@@ -19,16 +22,19 @@ import { DishComponent } from './components/dish/dish.component';
     NavigationComponent,
     IngredientComponent,
     NotFoundComponent,
-    DishComponent
+    DishComponent,
+    ImageUploaderComponent,
+    ImageGetComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatButtonModule
   ],
-  providers: [],
+  providers: [ImageGetComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {

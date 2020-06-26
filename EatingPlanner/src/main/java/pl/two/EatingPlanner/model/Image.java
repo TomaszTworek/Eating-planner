@@ -25,6 +25,12 @@ public class Image {
     @Column(length = 100000000)
     private byte[] picByte;
 
-    private Double size;
+    private Long size;
 
+    public Image(String name, String type, byte[] picByte, Long size) {
+        this.name = name;
+        this.type = type;
+        this.picByte = picByte;
+        this.size = size;
+    }
 }

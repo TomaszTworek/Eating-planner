@@ -8,5 +8,6 @@ export interface Dish {
   description: string;
   ingredients: Ingredient[];
   image : File;
+  getImg: any;
   calories: number;
 }

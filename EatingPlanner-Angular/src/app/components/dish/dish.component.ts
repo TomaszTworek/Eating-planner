@@ -5,6 +5,7 @@ import {IngredientViewModel} from "../ingredient/ingredient.component";
 import {Dish} from "../../models/dish";
 import {ApiDishesService} from "../../services/api-dishes.service";
 import {DishCategory} from "../../models/dish-category.enum";
+import {ImageGetComponent} from "../image-get/image-get.component";
 
 @Component({
   selector: 'app-dish',
@@ -23,11 +24,13 @@ export class DishComponent implements OnInit {
     ingredients: []
   }
 
-  constructor(private apiDishesService: ApiDishesService) {
+  constructor(private apiDishesService: ApiDishesService, private imageGetComponent: ImageGetComponent) {
   }
 
   ngOnInit(): void {
-    this.getAllDishes();
+    if(this.dishes != null) {
+      this.getAllDishes();
+    }
   }
 
 
@@ -35,6 +38,9 @@ export class DishComponent implements OnInit {
     this.apiDishesService.getAllDishes().subscribe(
       response => {
         this.dishes = response;
+        for(let dish of this.dishes){
+          this.imageGetComponent.getDishImageFromDB(dish);
+        }
       },
       error => {
         alert("An error occurred while getting all ingredients")
