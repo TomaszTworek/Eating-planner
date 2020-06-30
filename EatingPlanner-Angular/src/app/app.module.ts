@@ -15,6 +15,11 @@ import { DishComponent } from './components/dish/dish.component';
 import { ImageUploaderComponent } from './components/image-uploader/image-uploader.component';
 import { ImageGetComponent } from './components/image-get/image-get.component';
 import {MatButtonModule} from "@angular/material/button";
+import { AddDishButtonComponent } from './components/add-dish-button/add-dish-button.component';
+import { AddDishWindowComponent } from './components/add-dish-window/add-dish-window.component';
+import {MaterialModule} from "./components/angular-material/material.module";
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatDialogModule} from '@angular/material/dialog';
+
 
 @NgModule({
   declarations: [
@@ -24,15 +29,20 @@ import {MatButtonModule} from "@angular/material/button";
     NotFoundComponent,
     DishComponent,
     ImageUploaderComponent,
-    ImageGetComponent
+    ImageGetComponent,
+    AddDishButtonComponent,
+    AddDishWindowComponent
   ],
+  entryComponents: [AddDishButtonComponent, AddDishWindowComponent],
   imports: [
     BrowserModule,
     FormsModule,
+    MaterialModule,
     HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatButtonModule
+    MatButtonModule,
+    MatDialogModule
   ],
   providers: [ImageGetComponent],
   bootstrap: [AppComponent]
