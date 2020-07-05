@@ -46,7 +46,7 @@ import {AddIngredientToDishComponent} from "./components/ingredient/add-ingredie
     MatButtonModule,
     MatDialogModule
   ],
-  providers: [ImageGetComponent],
+  providers: [ImageGetComponent,ImageUploaderComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -60,7 +60,7 @@
         </div>
       </div>
     <!--Image choose and upload section -->
-    <app-image-uploader></app-image-uploader>
+    <app-image-uploader (imageEvent)="receiveImage($event)"></app-image-uploader>
     <button type="submit" (click)="saveDish()" class="btn btn-danger pull-right">Add dish</button>
     </form>
 

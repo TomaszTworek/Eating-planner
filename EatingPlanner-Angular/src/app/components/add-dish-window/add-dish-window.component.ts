@@ -1,6 +1,8 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {ApiDishesService} from "../../services/api-dishes.service";
 import {DishViewModel} from "../dish/dish.component";
+import {ImageUploaderComponent} from "../image-uploader/image-uploader.component";
+import {$e} from "codelyzer/angular/styles/chars";
 
 @Component({
   selector: 'app-add-dish-window',
@@ -14,19 +16,27 @@ export class AddDishWindowComponent implements OnInit {
     category: undefined,
     description: '',
     calories: undefined,
-    ingredients: []
+    ingredients: [],
+    image: null
   }
-  constructor(private apiDishesService: ApiDishesService) {
+
+  constructor(private apiDishesService: ApiDishesService,
+              private imageUploader: ImageUploaderComponent) {
   }
 
   ngOnInit(): void {
   }
 
-  receiveIngredients($event){
+  receiveIngredients($event) {
     this.dishViewModel.ingredients = $event;
   }
 
+  receiveImage($event) {
+    this.dishViewModel.image = $event;
+  }
+
   saveDish(): void {
+    console.log(this.dishViewModel.image)
     this.apiDishesService.addDish(this.dishViewModel).subscribe(
       response => {
         location.reload();

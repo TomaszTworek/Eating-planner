@@ -45,4 +45,5 @@ export interface DishViewModel {
   description: string;
   calories: number;
   ingredients: Ingredient[];
+  image: File;
 }

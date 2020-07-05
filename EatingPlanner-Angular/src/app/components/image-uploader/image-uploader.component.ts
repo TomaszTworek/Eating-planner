@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {ImageService} from "../../services/image.service";
+import {Ingredient} from "../../models/ingredient";
 
 @Component({
   selector: 'app-image-uploader',
@@ -15,6 +16,8 @@ export class ImageUploaderComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  @Output() imageEvent = new EventEmitter<File>();
 
   //Gets called when the user selects an image
   public onFileChanged(event) {
@@ -44,7 +47,8 @@ export class ImageUploaderComponent implements OnInit {
     return uploadImageData;
   }
 
-  onUpload() {
+  public onUpload() {
     this.uploadImage('imageFile', this.image);
+    this.imageEvent.emit(this.image);
   }
 }
