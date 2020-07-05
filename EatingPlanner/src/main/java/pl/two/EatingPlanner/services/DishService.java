@@ -14,10 +14,12 @@ public class DishService {
 
     private final DishRepository dishRepository;
     private final IngredientRepository ingredientRepository;
+    private final ImageService imageService;
 
-    public DishService(DishRepository dishRepository, IngredientRepository ingredientRepository) {
+    public DishService(DishRepository dishRepository, IngredientRepository ingredientRepository, ImageService imageService) {
         this.dishRepository = dishRepository;
         this.ingredientRepository = ingredientRepository;
+        this.imageService = imageService;
     }
 
     //I create new dashDAO object because i want to add every ingredient From dish list to database and to dish
@@ -37,6 +39,7 @@ public class DishService {
         Dish dishDAO = new Dish();
         dishDAO.setName(dish.getName());
         dishDAO.setDescription(dish.getDescription());
+        dishDAO.setImage(imageService.getCurrentImage());
         dishDAO.setDishCategory(dish.getDishCategory());
         dishDAO.setCalories(dish.getCalories());
         return dishDAO;

@@ -36,7 +36,7 @@ export class AddDishWindowComponent implements OnInit {
   }
 
   saveDish(): void {
-    console.log(this.dishViewModel.image)
+    console.log('WINDOW' + this.dishViewModel.image)
     this.apiDishesService.addDish(this.dishViewModel).subscribe(
       response => {
         location.reload();

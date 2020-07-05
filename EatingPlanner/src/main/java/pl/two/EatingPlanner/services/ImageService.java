@@ -16,6 +16,10 @@ public class ImageService {
     private final ImageRepository imageRepository;
     private Image currentImage;
 
+    public Image getCurrentImage() {
+        return currentImage;
+    }
+
     public ImageService(ImageRepository imageRepository) {
         this.imageRepository = imageRepository;
     }
