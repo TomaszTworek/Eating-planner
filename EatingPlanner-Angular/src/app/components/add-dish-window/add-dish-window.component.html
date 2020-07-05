@@ -1,1 +1,69 @@
-<p>add-dish-window works!</p>
+<h2 mat-dialog-title>Add new dish</h2>
+<mat-dialog-content class="mat-typography">
+  <app-add-ingredient-to-dish (event)="receiveIngredients($event)"></app-add-ingredient-to-dish>
+  <p>Ingredients in current dish:</p>
+  <div *ngFor="let ing of dishViewModel.ingredients" class="col-md-3 mx-auto my-2">
+    {{ing.name}}
+  </div>
+    <!-- Dish name label -->
+    <form name="form" #f="ngForm" (ngSubmit)="f.form.valid" novalidate class="feedback-form">
+      <div class="form-group">
+        <label for="name">Dish name: </label>
+        <input type="text"
+               id="name"
+               class="form-control"
+               name="name"
+               placeholder="Dish name" [(ngModel)]="dishViewModel.name"
+               #name="ngModel"
+               [ngClass]="{ 'is-invalid': f.submitted && name.invalid }"
+               required/>
+        <!-- Input validation group -->
+        <div *ngIf="f.submitted && name.invalid" class="invalid-input">
+          <!-- Individual validation errors-->
+          <div *ngIf="name.errors?.required">Field is required</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="category">Category: </label>
+        <select type="text"
+                id="category"
+                class="form-control"
+                name="category"
+                [(ngModel)]="dishViewModel.category"
+                #category="ngModel"
+                [ngClass]="{ 'is-invalid': f.submitted && category.invalid }"
+                required>
+          <option>BREAKFAST</option>
+          <option>LUNCH</option>
+          <option>DINNER</option>
+          <option>SUPPER</option>
+        </select>
+        <!-- Input validation group -->
+        <div *ngIf="f.submitted && category.invalid" class="invalid-input">
+          <!-- Individual validation errors-->
+          <div *ngIf="category.errors?.required">Field is required</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="description">Description:</label>
+        <input type="text"
+               id="description"
+               class="form-control"
+               name="description"
+               placeholder="Description" [(ngModel)]="dishViewModel.description"
+               #description="ngModel"
+               [ngClass]="{ 'is-invalid': f.submitted && description.invalid }"
+               required/>
+        <div *ngIf="f.submitted && description.invalid" class="invalid-input">
+          <!-- Individual validation errors-->
+          <div *ngIf="description.errors?.required">Field is required</div>
+        </div>
+      </div>
+    <!--Image choose and upload section -->
+    <app-image-uploader></app-image-uploader>
+    <button type="submit" (click)="saveDish()" class="btn btn-danger pull-right">Add dish</button>
+    </form>
+
+
+</mat-dialog-content>
+

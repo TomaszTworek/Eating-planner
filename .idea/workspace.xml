@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0facca26-4637-4459-b014-7f60d96e3443" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EatingPlanner-Angular/src/app/components/add-dish-window/add-dish-window.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/EatingPlanner-Angular/src/app/components/add-dish-window/add-dish-window.component.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,6 +35,7 @@
       <updated>1592291995531</updated>
       <workItem from="1592291996923" duration="13000" />
       <workItem from="1592825414007" duration="608000" />
+      <workItem from="1593939294338" duration="41000" />
     </task>
     <servers />
   </component>

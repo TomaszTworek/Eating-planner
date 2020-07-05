@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {Ingredient} from "../models/ingredient";
-import {IngredientViewModel} from "../components/ingredient/ingredient.component";
 import {Dish} from "../models/dish";
 import {DishViewModel} from "../components/dish/dish.component";
 

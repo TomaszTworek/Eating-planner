@@ -19,6 +19,7 @@ import { AddDishButtonComponent } from './components/add-dish-button/add-dish-bu
 import { AddDishWindowComponent } from './components/add-dish-window/add-dish-window.component';
 import {MaterialModule} from "./components/angular-material/material.module";
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatDialogModule} from '@angular/material/dialog';
+import {AddIngredientToDishComponent} from "./components/ingredient/add-ingredient-to-dish/add-ingredient-to-dish.component";
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatDialogModule} from '@angula
     ImageUploaderComponent,
     ImageGetComponent,
     AddDishButtonComponent,
-    AddDishWindowComponent
+    AddDishWindowComponent,
+    AddIngredientToDishComponent
   ],
   entryComponents: [AddDishButtonComponent, AddDishWindowComponent],
   imports: [
