@@ -1,7 +1,7 @@
 package pl.two.EatingPlanner.services;
 
 import org.springframework.stereotype.Service;
-import pl.two.EatingPlanner.model.Ingredient;
+import pl.two.EatingPlanner.models.Ingredient;
 import pl.two.EatingPlanner.repository.IngredientRepository;
 import java.util.List;
 

@@ -4,11 +4,9 @@ import org.assertj.core.api.Assertions;
 import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
-import pl.two.EatingPlanner.model.Ingredient;
+import pl.two.EatingPlanner.models.Ingredient;
 import pl.two.EatingPlanner.repository.IngredientRepository;
 
-import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
 public class IngredientServiceTest {

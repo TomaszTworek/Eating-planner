@@ -1,7 +1,7 @@
 package pl.two.EatingPlanner.controllers;
 
 import org.springframework.web.bind.annotation.*;
-import pl.two.EatingPlanner.model.Ingredient;
+import pl.two.EatingPlanner.models.Ingredient;
 import pl.two.EatingPlanner.services.IngredientService;
 
 import java.util.List;

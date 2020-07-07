@@ -4,12 +4,10 @@ import org.assertj.core.api.Assertions;
 import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import pl.two.EatingPlanner.model.Dish;
-import pl.two.EatingPlanner.model.Ingredient;
+import pl.two.EatingPlanner.models.Dish;
 import pl.two.EatingPlanner.repository.DishRepository;
 import pl.two.EatingPlanner.repository.IngredientRepository;
 
-import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 

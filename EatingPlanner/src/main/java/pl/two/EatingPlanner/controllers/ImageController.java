@@ -1,11 +1,10 @@
 package pl.two.EatingPlanner.controllers;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import pl.two.EatingPlanner.converters.ImageConverter;
-import pl.two.EatingPlanner.model.Image;
+import pl.two.EatingPlanner.models.Image;
 import pl.two.EatingPlanner.services.ImageService;
 
 import java.io.IOException;

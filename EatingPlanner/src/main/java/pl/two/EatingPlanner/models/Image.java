@@ -1,4 +1,4 @@
-package pl.two.EatingPlanner.model;
+package pl.two.EatingPlanner.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

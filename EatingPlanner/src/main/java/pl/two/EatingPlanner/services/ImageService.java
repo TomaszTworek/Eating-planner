@@ -3,7 +3,7 @@ package pl.two.EatingPlanner.services;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import pl.two.EatingPlanner.converters.ImageConverter;
-import pl.two.EatingPlanner.model.Image;
+import pl.two.EatingPlanner.models.Image;
 import pl.two.EatingPlanner.repository.ImageRepository;
 
 import java.io.IOException;

@@ -6,7 +6,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import pl.two.EatingPlanner.model.*;
+import pl.two.EatingPlanner.models.*;
 import pl.two.EatingPlanner.repository.DishRepository;
 import pl.two.EatingPlanner.repository.ImageRepository;
 import pl.two.EatingPlanner.repository.IngredientRepository;
