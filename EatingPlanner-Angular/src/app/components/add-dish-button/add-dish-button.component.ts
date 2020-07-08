@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AddDishWindowComponent} from "../add-dish-window/add-dish-window.component";
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+
 @Component({
   selector: 'app-add-dish-button',
   templateUrl: './add-dish-button.component.html',
@@ -18,7 +19,7 @@ export class AddDishButtonComponent implements OnInit {
 
   onCreateNewDish(): void {
     const dialogRef = this.dialog.open(AddDishWindowComponent,
-      {width: '800px'});
+      {width: '1200px', disableClose: true});
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
