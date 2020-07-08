@@ -3,7 +3,6 @@ import {NgModule} from '@angular/core';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {IngredientComponent} from './components/ingredient/ingredient.component';
 //Import forms:
 import {FormsModule} from "@angular/forms";
 //Import http to connect with backend
@@ -19,7 +18,6 @@ import { AddDishButtonComponent } from './components/add-dish-button/add-dish-bu
 import { AddDishWindowComponent } from './components/add-dish-window/add-dish-window.component';
 import {MaterialModule} from "./components/angular-material/material.module";
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatDialogModule} from '@angular/material/dialog';
-import {AddIngredientToDishComponent} from "./components/ingredient/add-ingredient-to-dish/add-ingredient-to-dish.component";
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 
 
@@ -27,14 +25,12 @@ import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dial
   declarations: [
     AppComponent,
     NavigationComponent,
-    IngredientComponent,
     NotFoundComponent,
     DishComponent,
     ImageUploaderComponent,
     ImageGetComponent,
     AddDishButtonComponent,
     AddDishWindowComponent,
-    AddIngredientToDishComponent,
     ConfirmDialogComponent
   ],
   entryComponents: [AddDishButtonComponent, AddDishWindowComponent,ConfirmDialogComponent],
