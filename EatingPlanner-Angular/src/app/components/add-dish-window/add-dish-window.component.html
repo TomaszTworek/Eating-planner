@@ -105,7 +105,9 @@
       <hr/>
     <button type="submit" (click)="saveDish()" class="btn btn-danger pull-right">Add dish</button>
     </form>
-
+  <div class="alert" [class.visible]="isVisible">
+    Ingredient added to dish
+  </div>
 
 </mat-dialog-content>
 
