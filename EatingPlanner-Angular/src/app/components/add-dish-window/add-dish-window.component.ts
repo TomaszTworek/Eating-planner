@@ -8,6 +8,7 @@ import {Common} from "../../models/api-ingredients";
 import {Ingredient} from "../../models/ingredient";
 import {ConfirmDialogComponent, ConfirmDialogModel} from "../confirm-dialog/confirm-dialog.component";
 import {MatDialog} from "@angular/material/dialog";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-add-dish-window',
@@ -22,6 +23,10 @@ export class AddDishWindowComponent implements OnInit {
   ingredients: Ingredient[] = [];
   result: string = '';
 
+  form = new FormGroup({
+    name: new FormControl('', Validators.required),
+    category: new FormControl('', Validators.required),
+  })
   dishViewModel: DishViewModel = {
     name: '',
     category: undefined,
@@ -40,9 +45,9 @@ export class AddDishWindowComponent implements OnInit {
   ngOnInit(): void {
   }
 
- /* receiveIngredients($event) {
-    this.dishViewModel.ingredients = $event;
-  }*/
+  /* receiveIngredients($event) {
+     this.dishViewModel.ingredients = $event;
+   }*/
 
   receiveImage($event) {
     this.dishViewModel.image = $event;
