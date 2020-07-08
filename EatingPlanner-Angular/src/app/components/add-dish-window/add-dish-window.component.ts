@@ -16,7 +16,7 @@ export class AddDishWindowComponent implements OnInit {
 
   commons: Common[] = [];
   displayedColumns: string[] = ['photo', 'food_name', 'serving_unit', 'plus'];
-  isVisible: boolean = false;
+  public isVisible: boolean = false;
   ingredients: Ingredient[] = [];
 
   dishViewModel: DishViewModel = {
