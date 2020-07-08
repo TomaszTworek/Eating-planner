@@ -6,6 +6,8 @@ import {$e} from "codelyzer/angular/styles/chars";
 import {ApiNutritionService} from "../../services/api-nutrition.service";
 import {Common} from "../../models/api-ingredients";
 import {Ingredient} from "../../models/ingredient";
+import {ConfirmDialogComponent, ConfirmDialogModel} from "../confirm-dialog/confirm-dialog.component";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-add-dish-window',
@@ -18,6 +20,7 @@ export class AddDishWindowComponent implements OnInit {
   displayedColumns: string[] = ['photo', 'food_name', 'serving_unit', 'plus'];
   public isVisible: boolean = false;
   ingredients: Ingredient[] = [];
+  result: string = '';
 
   dishViewModel: DishViewModel = {
     name: '',
@@ -30,7 +33,8 @@ export class AddDishWindowComponent implements OnInit {
 
   constructor(private apiDishesService: ApiDishesService,
               private imageUploader: ImageUploaderComponent,
-              private apiNutritionService: ApiNutritionService) {
+              private apiNutritionService: ApiNutritionService,
+              private dialog: MatDialog) {
   }
 
   ngOnInit(): void {
@@ -88,5 +92,20 @@ export class AddDishWindowComponent implements OnInit {
     }
     this.isVisible = true;
     setTimeout(() => this.isVisible = false, 1500)
+  }
+
+  confirmDialog(): void {
+    const message = `Are you sure you want to do this?`;
+
+    const dialogData = new ConfirmDialogModel("Confirm Action", message);
+
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      maxWidth: "400px",
+      data: dialogData
+    });
+
+    dialogRef.afterClosed().subscribe(dialogResult => {
+      this.result = dialogResult;
+    });
   }
 }

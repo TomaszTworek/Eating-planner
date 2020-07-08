@@ -20,6 +20,7 @@ import { AddDishWindowComponent } from './components/add-dish-window/add-dish-wi
 import {MaterialModule} from "./components/angular-material/material.module";
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatDialogModule} from '@angular/material/dialog';
 import {AddIngredientToDishComponent} from "./components/ingredient/add-ingredient-to-dish/add-ingredient-to-dish.component";
+import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 
 
 @NgModule({
@@ -33,9 +34,10 @@ import {AddIngredientToDishComponent} from "./components/ingredient/add-ingredie
     ImageGetComponent,
     AddDishButtonComponent,
     AddDishWindowComponent,
-    AddIngredientToDishComponent
+    AddIngredientToDishComponent,
+    ConfirmDialogComponent
   ],
-  entryComponents: [AddDishButtonComponent, AddDishWindowComponent],
+  entryComponents: [AddDishButtonComponent, AddDishWindowComponent,ConfirmDialogComponent],
   imports: [
     BrowserModule,
     FormsModule,

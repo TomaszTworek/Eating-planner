@@ -26,3 +26,24 @@ table {
   background-color: black;
   height: 100px;
 }
+
+.x-button {
+  height: 50px;
+  width: 50px;
+  background-color: #FA6900;
+  border-radius: 5px;
+  position: relative;
+}
+
+.x-button:after {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  content: "\274c"; /* use the hex value here... */
+  font-size: 50px;
+  color: #FFF;
+  line-height: 100px;
+  text-align: center;
+}
