@@ -14,7 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/nutrition")
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:4200")
 public class NutritionAPI {
 
     @GetMapping("getIngredient/{ingredientName}")
