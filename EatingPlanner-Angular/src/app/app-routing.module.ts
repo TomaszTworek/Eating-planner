@@ -6,16 +6,12 @@ import {DishComponent} from "./components/dish/dish.component";
 
 const routes: Routes = [
   {
-    path: 'ingredients',
-    component: IngredientComponent
-  },
-  {
     path: 'dishes',
     component: DishComponent
   },
   {
     path: '',
-    component: IngredientComponent,
+    component: DishComponent,
   },
   {
     path: '**',

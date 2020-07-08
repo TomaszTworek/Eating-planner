@@ -2,7 +2,7 @@ package pl.two.EatingPlanner.controllers.viewmodels;
 
 import com.sun.istack.NotNull;
 import lombok.Data;
-import pl.two.EatingPlanner.model.Dish;
+import pl.two.EatingPlanner.models.Dish;
 
 import java.util.List;
 
