@@ -19,6 +19,7 @@ import { AddDishWindowComponent } from './components/add-dish-window/add-dish-wi
 import {MaterialModule} from "./components/angular-material/material.module";
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatDialogModule} from '@angular/material/dialog';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
+import {Ng2ImgMaxModule} from "ng2-img-max";
 
 
 @NgModule({
@@ -40,6 +41,7 @@ import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dial
     MaterialModule,
     HttpClientModule,
     ReactiveFormsModule,
+    Ng2ImgMaxModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatButtonModule,
