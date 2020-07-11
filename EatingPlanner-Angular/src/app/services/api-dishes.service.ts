@@ -19,7 +19,6 @@ export class ApiDishesService {
   }
 
   addDish(dish: DishViewModel): Observable<any> {
-    console.log('SERVICE: ' + dish.image)
     return this.http.post(this.ADD_DISH_URL, dish);
   }
 }

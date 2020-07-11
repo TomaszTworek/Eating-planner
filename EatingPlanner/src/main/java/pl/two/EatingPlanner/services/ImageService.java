@@ -16,6 +16,10 @@ public class ImageService {
     private final ImageRepository imageRepository;
     private Image currentImage;
 
+    public void setCurrentImage(Image currentImage) {
+        this.currentImage = currentImage;
+    }
+
     public Image getCurrentImage() {
         return currentImage;
     }
@@ -38,5 +42,9 @@ public class ImageService {
 
     public List<Image> getAllImages() {
         return imageRepository.findAll();
+    }
+
+    public Optional<Image> findById(Long id) {
+        return imageRepository.findById(id);
     }
 }

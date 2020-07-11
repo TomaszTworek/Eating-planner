@@ -1,11 +1,16 @@
 package pl.two.EatingPlanner.services;
 
+import org.springframework.http.MediaType;
+import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 import pl.two.EatingPlanner.models.Dish;
 import pl.two.EatingPlanner.models.Ingredient;
 import pl.two.EatingPlanner.repository.DishRepository;
 import pl.two.EatingPlanner.repository.IngredientRepository;
 
+import javax.imageio.stream.FileImageInputStream;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,11 +44,16 @@ public class DishService {
         Dish dishDAO = new Dish();
         dishDAO.setName(dish.getName());
         dishDAO.setDescription(dish.getDescription());
+        if (imageService.getCurrentImage() == null) {
+           imageService.setCurrentImage(imageService.findByName("brak-zdjecia").get());
+        }
         dishDAO.setImage(imageService.getCurrentImage());
+        imageService.setCurrentImage(null);
         dishDAO.setDishCategory(dish.getDishCategory());
         dishDAO.setCalories(dish.getCalories());
         return dishDAO;
     }
+
 
     public List<Dish> findAll() {
         return dishRepository.findAll();

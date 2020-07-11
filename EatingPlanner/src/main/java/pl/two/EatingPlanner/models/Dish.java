@@ -31,7 +31,7 @@ public class Dish {
 
     private String description;
 
-    @OneToOne(cascade = CascadeType.MERGE)
+    @ManyToOne(cascade = CascadeType.MERGE)
     private Image image;
 
     @ManyToMany(mappedBy = "dishes")

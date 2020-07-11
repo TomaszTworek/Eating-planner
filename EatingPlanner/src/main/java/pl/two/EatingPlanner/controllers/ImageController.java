@@ -38,6 +38,7 @@ public class ImageController {
                 ImageConverter.decompressBytes(retrievedImage.get().getPicByte()), retrievedImage.get().getSize());
     }
 
+
     @GetMapping("/get/all")
     public List<Image> getAllImages() {
         return imageService.getAllImages();
