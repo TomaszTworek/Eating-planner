@@ -5,6 +5,11 @@
   padding: 5px;
   justify-content: flex-start;
 }
+@media screen and (max-width: 480px) {
+  #add-dish-button {
+    justify-content: center;
+  }
+}
 *{
   margin: 0;
   padding: 0;
@@ -18,35 +23,47 @@
 #content{
   display: flex;
   flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: flex-start;
   margin-left: 10px;
 }
 
 .single-dish {
   flex: 1 1 100%;
   padding: 0.5em;
+  margin: auto;
+  max-width: 360px;
 }
 
 .single-dish img {
   height: 250px;
   width: 100%;
+  max-width: 360px;
 }
 
 @media screen and (min-width: 480px) {
   .single-dish {
     flex: 1 1 50%;
   }
+
 }
 
 @media screen and (min-width: 768px) {
   .single-dish {
     flex: 1 1 33.333%;
   }
+
 }
 
 @media screen and (min-width: 1154px) {
   .single-dish {
     flex: 1 1 25%;
+    justify-content: center;
   }
+  /*.single-dish img{
+    max-width: 360px;
+  }*/
+
 }
 /*@media only screen and (max-width: 450px) {
   .single-dish{
