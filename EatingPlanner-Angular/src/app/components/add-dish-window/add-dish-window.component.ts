@@ -9,6 +9,8 @@ import {Ingredient} from "../../models/ingredient";
 import {ConfirmDialogComponent, ConfirmDialogModel} from "../confirm-dialog/confirm-dialog.component";
 import {MatDialog} from "@angular/material/dialog";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {MatTable} from "@angular/material/table";
+import {ViewChild} from "@angular/core";
 
 @Component({
   selector: 'app-add-dish-window',
@@ -19,9 +21,11 @@ export class AddDishWindowComponent implements OnInit {
 
   commons: Common[] = [];
   displayedColumns: string[] = ['photo', 'food_name', 'serving_unit', 'plus'];
+  displayedColumnsIng: string[] = ['ing_name','units']
   public isVisible: boolean = false;
   ingredients: Ingredient[] = [];
   result: string = '';
+  @ViewChild(MatTable) table: MatTable<any>;
 
   form = new FormGroup({
     name: new FormControl('', Validators.required),
@@ -89,6 +93,7 @@ export class AddDishWindowComponent implements OnInit {
     console.log('New Ingredient units: ', newIngredient.units);
     this.ingredients.push(newIngredient);
     this.displayMessageForUser();
+    this.table.renderRows();
   }
 
   displayMessageForUser(): void {
