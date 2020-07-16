@@ -1,6 +1,7 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {ImageService} from "../../services/image.service";
 import {Ingredient} from "../../models/ingredient";
+import {Ng2ImgMaxService} from "ng2-img-max";
 
 @Component({
   selector: 'app-image-uploader',
@@ -12,7 +13,9 @@ export class ImageUploaderComponent implements OnInit {
   image: File = null;
   private messageWhileUploadImage: string;
 
-  constructor(private imageService:ImageService) { }
+  constructor(private imageService: ImageService,
+              private ng2ImgMax: Ng2ImgMaxService) {
+  }
 
   ngOnInit(): void {
   }
@@ -23,6 +26,15 @@ export class ImageUploaderComponent implements OnInit {
   public onFileChanged(event) {
     //Select File
     this.image = event.target.files[0];
+
+    /*this.ng2ImgMax.resizeImage(image, 360, 250).subscribe(
+      result => {
+        this.image = new File([result], result.name);
+      },
+      error => {
+        console.log('😢 Oh no!', error);
+      }
+    )*/
   }
 
 
@@ -32,7 +44,7 @@ export class ImageUploaderComponent implements OnInit {
     return uploadImageData;
   }
 
- private uploadImage(imageFile: string, image: File) {
+  private uploadImage(imageFile: string, image: File) {
     const uploadImageData = this.prepareFormData(imageFile, image);
     //Make a call to the Spring Boot Application to save the image
     this.imageService.uploadImage(uploadImageData)

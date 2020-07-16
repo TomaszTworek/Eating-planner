@@ -1,13 +1,15 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ApiDishesService} from "../../services/api-dishes.service";
 import {DishViewModel} from "../dish/dish.component";
 import {ImageUploaderComponent} from "../image-uploader/image-uploader.component";
-import {$e} from "codelyzer/angular/styles/chars";
 import {ApiNutritionService} from "../../services/api-nutrition.service";
 import {Common} from "../../models/api-ingredients";
 import {Ingredient} from "../../models/ingredient";
 import {ConfirmDialogComponent, ConfirmDialogModel} from "../confirm-dialog/confirm-dialog.component";
 import {MatDialog} from "@angular/material/dialog";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {MatTable, MatTableDataSource} from "@angular/material/table";
+import {ViewChild} from "@angular/core";
 
 @Component({
   selector: 'app-add-dish-window',
@@ -17,11 +19,18 @@ import {MatDialog} from "@angular/material/dialog";
 export class AddDishWindowComponent implements OnInit {
 
   commons: Common[] = [];
-  displayedColumns: string[] = ['photo', 'food_name', 'serving_unit', 'plus'];
+  displayedColumnsAPIIngredients: string[] = ['photo', 'food_name', 'serving_unit', 'plus'];
+  displayedColumnsAddedIngredients: string[] = ['index', 'ing_name', 'units','deleteIngredient']
   public isVisible: boolean = false;
   ingredients: Ingredient[] = [];
   result: string = '';
+  indexCounter: number = 0;
+  @ViewChild(MatTable) table: MatTable<Ingredient>;
 
+  form = new FormGroup({
+    name: new FormControl('', Validators.required),
+    category: new FormControl('', Validators.required),
+  })
   dishViewModel: DishViewModel = {
     name: '',
     category: undefined,
@@ -40,10 +49,6 @@ export class AddDishWindowComponent implements OnInit {
   ngOnInit(): void {
   }
 
- /* receiveIngredients($event) {
-    this.dishViewModel.ingredients = $event;
-  }*/
-
   receiveImage($event) {
     this.dishViewModel.image = $event;
   }
@@ -59,6 +64,7 @@ export class AddDishWindowComponent implements OnInit {
         alert("An error has occured while sending feedback");
       }
     );
+    this.indexCounter = 0;
   }
 
   getIngredients(name: string) {
@@ -77,13 +83,12 @@ export class AddDishWindowComponent implements OnInit {
       name: ingredientName,
       units: units,
       calories: calories,
-      dishes: null
+      dishes: null,
     }
-    console.log('New Ingredient name: ', newIngredient.name);
-    console.log('New Ingredient amount: ', newIngredient.calories);
-    console.log('New Ingredient units: ', newIngredient.units);
+    this.indexCounter++;
     this.ingredients.push(newIngredient);
     this.displayMessageForUser();
+    this.table.renderRows();
   }
 
   displayMessageForUser(): void {
@@ -107,5 +112,13 @@ export class AddDishWindowComponent implements OnInit {
     dialogRef.afterClosed().subscribe(dialogResult => {
       this.result = dialogResult;
     });
+  }
+
+  deleteIngredient(ingredientIndex: number): void {
+    if (ingredientIndex !== -1) {
+      this.ingredients.splice(ingredientIndex, 1);
+      this.table.renderRows();
+
+    }
   }
 }

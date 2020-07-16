@@ -4,7 +4,7 @@ import {NgModule} from '@angular/core';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 //Import forms:
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 //Import http to connect with backend
 import {HttpClientModule} from "@angular/common/http";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -19,6 +19,7 @@ import { AddDishWindowComponent } from './components/add-dish-window/add-dish-wi
 import {MaterialModule} from "./components/angular-material/material.module";
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatDialogModule} from '@angular/material/dialog';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
+import {Ng2ImgMaxModule} from "ng2-img-max";
 
 
 @NgModule({
@@ -39,6 +40,8 @@ import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dial
     FormsModule,
     MaterialModule,
     HttpClientModule,
+    ReactiveFormsModule,
+    Ng2ImgMaxModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatButtonModule,

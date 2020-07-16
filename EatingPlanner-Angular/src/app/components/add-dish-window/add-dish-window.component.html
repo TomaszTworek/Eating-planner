@@ -1,49 +1,39 @@
-<h2 mat-dialog-title>Add new dish</h2>
+<h2 mat-dialog-title>Add new dish<button class=" btn btn-secondary pull-right" (click)="confirmDialog()">X</button></h2>
 
 <mat-dialog-content class="mat-typography">
 
   <!--  <app-add-ingredient-to-dish (event)="receiveIngredients($event)"></app-add-ingredient-to-dish>-->
-  <p>Ingredients in current dish:</p>
-  <div *ngFor="let ing of ingredients" class="col-md-3 mx-auto my-2">
-    {{ing.name}}
-  </div>
+
   <!-- Dish name label -->
-  <form name="form" #f="ngForm" (ngSubmit)="f.form.valid" novalidate class="feedback-form">
+  <form name="form" #f="ngForm" [formGroup]="form" (ngSubmit)="f.form.valid" novalidate class="feedback-form">
     <div class="form-group">
       <label for="name">Dish name: </label>
       <input type="text"
-             id="name"
+             id="name" formControlName="name"
              class="form-control"
              name="name"
-             placeholder="Dish name" [(ngModel)]="dishViewModel.name"
-             #name="ngModel"
-             [ngClass]="{ 'is-invalid': f.submitted && name.invalid }"
-             required/>
-      <!-- Input validation group -->
-      <div *ngIf="f.submitted && name.invalid" class="invalid-input">
-        <!-- Individual validation errors-->
-        <div *ngIf="name.errors?.required">Field is required</div>
+             placeholder="Dish name"  [(ngModel)]="dishViewModel.name"
+             [ngClass]="{ 'is-invalid': form.get('name').touched && form.get('name').invalid}">
+      <div class="invalid-feedback">
+        <div>Dish name is required</div>
       </div>
     </div>
     <div class="form-group">
       <label for="category">Category: </label>
       <select type="text"
-              id="category"
+              id="category" formControlName="category"
               class="form-control"
               name="category"
               [(ngModel)]="dishViewModel.category"
-              #category="ngModel"
-              [ngClass]="{ 'is-invalid': f.submitted && category.invalid }"
-              required>
+              [ngClass]="{ 'is-invalid': form.get('category').touched && form.get('category').invalid}">
         <option>BREAKFAST</option>
         <option>LUNCH</option>
         <option>DINNER</option>
         <option>SUPPER</option>
       </select>
       <!-- Input validation group -->
-      <div *ngIf="f.submitted && category.invalid" class="invalid-input">
-        <!-- Individual validation errors-->
-        <div *ngIf="category.errors?.required">Field is required</div>
+      <div class="invalid-feedback">
+        <div>Category is required</div>
       </div>
     </div>
     <div class="form-group">
@@ -52,15 +42,38 @@
              id="description"
              class="form-control"
              name="description"
-             placeholder="Description" [(ngModel)]="dishViewModel.description"
-             #description="ngModel"
-             [ngClass]="{ 'is-invalid': f.submitted && description.invalid }"
-             required/>
-      <div *ngIf="f.submitted && description.invalid" class="invalid-input">
-        <!-- Individual validation errors-->
-        <div *ngIf="description.errors?.required">Field is required</div>
-      </div>
+             placeholder="Description" [ngModelOptions]="{standalone: true}" [(ngModel)]="dishViewModel.description">
     </div>
+    <p>Ingredients in current dish:</p>
+    <table *ngIf="ingredients" id="addedIngredients" mat-table [dataSource]="ingredients" class="mat-elevation-z8">
+
+      <ng-container matColumnDef="index">
+        <th mat-header-cell *matHeaderCellDef>Index:</th>
+        <td mat-cell *matCellDef="let element; let i = index"> {{i+1}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="ing_name">
+        <th mat-header-cell *matHeaderCellDef>Name:</th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="units">
+        <th mat-header-cell *matHeaderCellDef>Units:</th>
+        <td mat-cell *matCellDef="let element"> {{element.units}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="deleteIngredient">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let element">
+          <button (click)="deleteIngredient(element.position)" class="btn btn-danger"><i
+            class="fa fa-minus"></i></button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumnsAddedIngredients"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumnsAddedIngredients; "></tr>
+    </table>
     <!--Image choose and upload section -->
     <app-image-uploader (imageEvent)="receiveImage($event)"></app-image-uploader>
 
@@ -104,13 +117,14 @@
         </td>
       </ng-container>
 
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns; "></tr>
+      <tr mat-header-row *matHeaderRowDef="displayedColumnsAPIIngredients"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumnsAPIIngredients; "></tr>
     </table>
     <hr/>
     <div class="btn-group">
       <button mat-button (click)="confirmDialog()">Cancel</button>
-      <button type="submit" (click)="saveDish()" class="btn btn-danger pull-right">Add dish</button>
+      <button type="submit" (click)="saveDish()" [disabled]="!form.valid" class="btn btn-danger pull-right">Add dish
+      </button>
     </div>
   </form>
   <div class="alert" [class.visible]="isVisible">
